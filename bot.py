@@ -22,11 +22,10 @@ gif = [
 
 @app.on_chat_join_request(filters.group | filters.channel & ~filters.private)
 async def approve(_, m : Message):
-    op = m.chat
     kk = m.from_user
     try:
         add_group(m.chat.id)
-        await app.approve_chat_join_request(op.id, kk.id)
+        await app.approve_chat_join_request(kk.id)
         btn = InlineKeyboardMarkup(
             [
                 [
